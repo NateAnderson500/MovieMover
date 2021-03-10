@@ -3,19 +3,6 @@ using IronXL;
 
 namespace MovieMover
 {
-    class testLol 
-    {
-        static void Main(string[] args)
-        {
-            string lol = "lol lol";
-
-            Console.WriteLine(lol);
-
-            return;
-        }
-
-    }
-
     class Program
     {
         static void Main(string[] args)
@@ -47,6 +34,7 @@ namespace MovieMover
 
                 // PRINT THE WORKSHEET
                 Console.WriteLine(cabinSheet);
+                Console.WriteLine("\n");
             }
             
             // TEST FOR "LATHAM" INPUT
@@ -63,8 +51,8 @@ namespace MovieMover
 
                 // PRINT THE WORKSHEET
                 Console.WriteLine(lathamSheet);
-
-                testLol;
+                Console.WriteLine("\n");
+                
             }
 
             // TEST FOR "DIGITAL" INPUT
@@ -100,32 +88,29 @@ namespace MovieMover
                 Console.WriteLine("Would you like to search in the Cabin, Latham, Digital, or add a new movie? ");
 
                 // GET THE INPUT
-                searchLocation = Console.ReadLine();
-
-
-                
+                searchLocation = Console.ReadLine();                
             }
 
             
 
-            //// ASK FOR ANOTHER INPUT
-            //Console.WriteLine("Would you like to search somewhere else? (Y / N) ");
-            //Console.WriteLine();
-            //newSearch = Console.ReadLine();
+            //ASK FOR ANOTHER INPUT
+            Console.WriteLine("Would you like to search somewhere else? (Y / N) ");
+            Console.WriteLine();
+            newSearch = Console.ReadLine();
 
-            ////if (newSearch == "Yes")
-            //{
-            //    //Console.WriteLine("Would you like to search in the Cabin, Latham, Digital, or add a new movie? ");
-            //    //searchLocation = Console.ReadLine();
+            if (newSearch == "Yes")
+            {
+                Console.WriteLine("Would you like to search in the Cabin, Latham, Digital, or add a new movie? ");
+                searchLocation = Console.ReadLine();
 
                 
-            //}
+            }
 
-            ////else if (newSearch == "No")
-            //{
-            //    Console.WriteLine("Have a nice day!! Please press enter to exit the program.");
-            //    Console.ReadLine();
-            //}
+            else if (newSearch == "No")
+            {
+                Console.WriteLine("Have a nice day!! Please press enter to exit the program.");
+                Console.ReadLine();
+            }
         }
     }
 }
