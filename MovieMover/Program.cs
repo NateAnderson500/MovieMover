@@ -46,7 +46,7 @@ namespace MovieMover
                 // BRING IN THE FILE AND APPROPRIATE WORKSHEET
                 var digitalBook = new WorkBook("MovieList.xlsx");
                 var digitalSheet = digitalBook.GetWorkSheet("Latham");
-                var titleRange = digitalSheet.GetRange("A1:A199");
+                var titleRange = digitalSheet.GetRange("A1:A203");
                 var locationRange = digitalSheet.GetRange("B1:B199");
                 var typeRange = digitalSheet.GetRange("C1:C199");
                 var conditionRange = digitalSheet.GetRange("D1:D199");
@@ -57,10 +57,10 @@ namespace MovieMover
                     
                 }
 
-                foreach (var cellB in locationRange)
-                {
-                    Console.WriteLine("\t" + cellB);
-                }
+                //foreach (var cellB in locationRange)
+                //{
+                //    Console.WriteLine("\t" + cellB);
+                //}
                 
 
                 
