@@ -13,9 +13,9 @@ namespace MovieMover
 
 
             // PRINT WELCOME MESSAGE AND ASK FOR INPUT
-            Console.WriteLine("Welcome to your movie collection Egan family! ");
+            Console.WriteLine("Welcome to your movie collection! ");
             Console.WriteLine("\n");
-            Console.WriteLine("Would you like to search in the Cabin, Latham, the Digital list, or add a new movie? ");
+            Console.WriteLine("Would you like to search in the Cabin, Home, the Digital list, or add a new movie? ");
 
             // GET THE INPUT
             searchLocation = Console.ReadLine();
@@ -38,20 +38,31 @@ namespace MovieMover
             }
             
             // TEST FOR "LATHAM" INPUT
-            else if(searchLocation == "Latham")
+            else if(searchLocation == "Home")
             {
                 // PRINTS A NICE SPACE
                 Console.WriteLine();
-                
-                // BRING IN THE FILE AND APPROPRIATE WORKSHEET
-                WorkBook lathamList = new WorkBook("MovieList.xlsx");
-                WorkSheet lathamSheet = lathamList.GetWorkSheet("Latham");
-                
-                // FORMAT THE WORKSHEET
 
-                // PRINT THE WORKSHEET
-                Console.WriteLine(lathamSheet);
-                Console.WriteLine("\n");
+                // BRING IN THE FILE AND APPROPRIATE WORKSHEET
+                var digitalBook = new WorkBook("MovieList.xlsx");
+                var digitalSheet = digitalBook.GetWorkSheet("Latham");
+                var titleRange = digitalSheet.GetRange("A1:A199");
+                var locationRange = digitalSheet.GetRange("B1:B199");
+                var typeRange = digitalSheet.GetRange("C1:C199");
+                var conditionRange = digitalSheet.GetRange("D1:D199");
+                var digitalRange = digitalSheet.GetRange("E1:E199");
+                foreach (var cellA in titleRange)
+                {
+                    Console.WriteLine(cellA);
+                    
+                }
+
+                foreach (var cellB in locationRange)
+                {
+                    Console.WriteLine("\t" + cellB);
+                }
+                
+
                 
             }
 
@@ -62,13 +73,14 @@ namespace MovieMover
                 Console.WriteLine();
 
                 // BRING IN THE FILE AND WORKSHEET
-                WorkBook digitalList = new WorkBook("MovieList.xlsx");
-                WorkSheet digitalSheet = digitalList.GetWorkSheet("Digital");
-
-                // FORMAT THE WORKSHEET
-
-                // PRINT THE WORKSHEET
-                Console.WriteLine(digitalSheet);                
+                var digitalBook = new WorkBook("MovieList.xlsx");
+                var digitalSheet =  digitalBook.GetWorkSheet("Digital");
+                var titleRange = digitalSheet.GetRange("A1:A100");
+                foreach (var cellA in titleRange)
+                {
+                    Console.WriteLine(cellA.Value); 
+                }              
+                               
             }
 
             // TEST FOR "NEW" INPUT
@@ -85,7 +97,7 @@ namespace MovieMover
                 // PRINT ERROR MESSAGE AND TRY AGAIN
                 Console.WriteLine("Please enter a valid input. (Try capitalizing the first letter) ");
                 Console.WriteLine("\n");
-                Console.WriteLine("Would you like to search in the Cabin, Latham, Digital, or add a new movie? ");
+                Console.WriteLine("Would you like to search in the Cabin, Home, Digital, or add a new movie? ");
 
                 // GET THE INPUT
                 searchLocation = Console.ReadLine();                
@@ -100,7 +112,7 @@ namespace MovieMover
 
             if (newSearch == "Yes")
             {
-                Console.WriteLine("Would you like to search in the Cabin, Latham, Digital, or add a new movie? ");
+                Console.WriteLine("Would you like to search in the Cabin, Home, Digital, or add a new movie? ");
                 searchLocation = Console.ReadLine();
 
                 
