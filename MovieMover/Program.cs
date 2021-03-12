@@ -10,7 +10,7 @@ namespace MovieMover
             // DECALRE GLOBAL VARIABLES
             string searchLocation = "";
             string newSearch = "";
-
+            Program input = new Program();
 
             // PRINT WELCOME MESSAGE AND ASK FOR INPUT
             Console.WriteLine("Welcome to your movie collection! ");
@@ -23,65 +23,21 @@ namespace MovieMover
             // TEST FOR "CABIN" INPUT
             if(searchLocation == "Cabin")
             {
-                // PRINTS A NICE SPACE
-                Console.WriteLine();
-
-                // BRING IN THE FILE AND APPROPRIATE WORKSHEET
-                WorkBook CabinList = new WorkBook("MovieList.xlsx");
-                WorkSheet cabinSheet = CabinList.GetWorkSheet("Cabin");
-
-                // FORMAT THE WORKSHEET
-
-                // PRINT THE WORKSHEET
-                Console.WriteLine(cabinSheet);
-                Console.WriteLine("\n");
+                input.cabin();
             }
             
             // TEST FOR "LATHAM" INPUT
             else if(searchLocation == "Home")
             {
-                // PRINTS A NICE SPACE
-                Console.WriteLine();
-
-                // BRING IN THE FILE AND APPROPRIATE WORKSHEET
-                var digitalBook = new WorkBook("MovieList.xlsx");
-                var digitalSheet = digitalBook.GetWorkSheet("Latham");
-                var titleRange = digitalSheet.GetRange("A1:A203");
-                var locationRange = digitalSheet.GetRange("B1:B199");
-                var typeRange = digitalSheet.GetRange("C1:C199");
-                var conditionRange = digitalSheet.GetRange("D1:D199");
-                var digitalRange = digitalSheet.GetRange("E1:E199");
-                foreach (var cellA in titleRange)
-                {
-                    Console.WriteLine(cellA);
-                    
-                }
-
-                //foreach (var cellB in locationRange)
-                //{
-                //    Console.WriteLine("\t" + cellB);
-                //}
-                
-
-                
+                input.home();
             }
 
             // TEST FOR "DIGITAL" INPUT
             else if (searchLocation == "Digital")
             {
-                // PRINTS A NICE SPACE
-                Console.WriteLine();
-
-                // BRING IN THE FILE AND WORKSHEET
-                var digitalBook = new WorkBook("MovieList.xlsx");
-                var digitalSheet =  digitalBook.GetWorkSheet("Digital");
-                var titleRange = digitalSheet.GetRange("A1:A100");
-                foreach (var cellA in titleRange)
-                {
-                    Console.WriteLine(cellA.Value); 
-                }              
-                               
+                input.digital();
             }
+            
 
             // TEST FOR "NEW" INPUT
             else if(searchLocation == "New")
@@ -122,6 +78,56 @@ namespace MovieMover
             {
                 Console.WriteLine("Have a nice day!! Please press enter to exit the program.");
                 Console.ReadLine();
+            }
+        }
+
+        // METHOD TO PRINT THE CABIN LIST
+        public void cabin()
+        {
+            // PRINTS A NICE SPACE
+            Console.WriteLine();
+
+            // BRING IN THE FILE AND APPROPRIATE WORKSHEET
+            WorkBook CabinList = new WorkBook("MovieList.xlsx");
+            WorkSheet cabinSheet = CabinList.GetWorkSheet("Cabin");
+
+            // FORMAT THE WORKSHEET
+
+            // PRINT THE WORKSHEET
+            Console.WriteLine(cabinSheet);
+            Console.WriteLine("\n");
+        }
+
+        public void home()
+        {
+            // PRINTS A NICE SPACE
+            Console.WriteLine();
+
+            // BRING IN THE FILE AND APPROPRIATE WORKSHEET
+            var digitalBook = new WorkBook("MovieList.xlsx");
+            var digitalSheet = digitalBook.GetWorkSheet("Latham");
+            var titleRange = digitalSheet.GetRange("A1:A203");
+            var locationRange = digitalSheet.GetRange("B1:B199");
+            var typeRange = digitalSheet.GetRange("C1:C199");
+            var conditionRange = digitalSheet.GetRange("D1:D199");
+            var digitalRange = digitalSheet.GetRange("E1:E199");
+
+
+            Console.Write(titleRange + "\t" + locationRange);
+        }
+
+        public void digital()
+        {
+            // PRINTS A NICE SPACE
+            Console.WriteLine();
+
+            // BRING IN THE FILE AND WORKSHEET
+            var digitalBook = new WorkBook("MovieList.xlsx");
+            var digitalSheet = digitalBook.GetWorkSheet("Digital");
+            var titleRange = digitalSheet.GetRange("A1:A100");
+            foreach (var cellA in titleRange)
+            {
+                Console.WriteLine(cellA.Value);
             }
         }
     }
