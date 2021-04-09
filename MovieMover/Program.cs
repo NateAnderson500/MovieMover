@@ -105,7 +105,7 @@ namespace MovieMover
 
             // BRING IN THE FILE AND APPROPRIATE WORKSHEET
             var digitalBook = new WorkBook("MovieList.xlsx");
-            var digitalSheet = digitalBook.GetWorkSheet("Latham");
+            var digitalSheet = digitalBook.GetWorkSheet("Home");
             var titleRange = digitalSheet.GetRange("A1:A203");
             var locationRange = digitalSheet.GetRange("B1:B199");
             var typeRange = digitalSheet.GetRange("C1:C199");
